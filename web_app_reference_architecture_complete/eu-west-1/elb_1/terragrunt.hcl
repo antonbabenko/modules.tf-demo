@@ -18,6 +18,10 @@ dependency "security-group_5" {
   config_path = "../security-group_5"
 }
 
+###########################################################
+# View all available inputs for this module:
+# https://registry.terraform.io/modules/terraform-aws-modules/elb/aws/2.3.0?tab=inputs
+###########################################################
 inputs = {
   # A health check block
   # type: map(string)
@@ -29,7 +33,7 @@ inputs = {
 
   # The name of the ELB
   # type: string
-  name = "sweet-serval"
+  name = "immune-mullet"
 
   # A list of security group IDs to assign to the ELB
   # type: list(string)

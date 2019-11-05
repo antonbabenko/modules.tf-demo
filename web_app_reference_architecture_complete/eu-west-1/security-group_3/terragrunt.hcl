@@ -14,6 +14,10 @@ dependency "vpc" {
   config_path = "../vpc"
 }
 
+###########################################################
+# View all available inputs for this module:
+# https://registry.terraform.io/modules/terraform-aws-modules/security-group/aws/3.1.0?tab=inputs
+###########################################################
 inputs = {
   # List of IPv4 CIDR ranges to use on all ingress rules
   # type: list(string)

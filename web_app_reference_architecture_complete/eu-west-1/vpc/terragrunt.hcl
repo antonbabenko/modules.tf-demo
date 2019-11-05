@@ -14,6 +14,10 @@ dependency "aws-data" {
   config_path = "../aws-data"
 }
 
+###########################################################
+# View all available inputs for this module:
+# https://registry.terraform.io/modules/terraform-aws-modules/vpc/aws/2.18.0?tab=inputs
+###########################################################
 inputs = {
   # A list of availability zones in the region
   # type: list(string)

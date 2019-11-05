@@ -22,6 +22,10 @@ dependency "security-group_2" {
   config_path = "../security-group_2"
 }
 
+###########################################################
+# View all available inputs for this module:
+# https://registry.terraform.io/modules/terraform-aws-modules/autoscaling/aws/3.1.0?tab=inputs
+###########################################################
 inputs = {
   # The number of Amazon EC2 instances that should be running in the group
   # type: string
@@ -49,7 +53,7 @@ inputs = {
 
   # Creates a unique name beginning with the specified prefix
   # type: string
-  name = "able-foal"
+  name = "usable-seal"
 
   # A list of security group IDs to assign to the launch configuration
   # type: list(string)

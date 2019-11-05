@@ -18,6 +18,10 @@ dependency "security-group_1" {
   config_path = "../security-group_1"
 }
 
+###########################################################
+# View all available inputs for this module:
+# https://registry.terraform.io/modules/terraform-aws-modules/rds/aws/2.5.0?tab=inputs
+###########################################################
 inputs = {
   # The allocated storage in gigabytes
   # type: string
@@ -49,7 +53,7 @@ inputs = {
 
   # The name of the RDS instance, if omitted, Terraform will assign a random, unique identifier
   # type: string
-  identifier = "comic-beagle"
+  identifier = "fancy-vervet"
 
   # The instance type of the RDS instance
   # type: string
@@ -69,7 +73,7 @@ inputs = {
 
   # Password for the master DB user. Note that this may show up in logs, and it will be stored in the state file
   # type: string
-  password = "azvNz5UZrtGm"
+  password = "PIZ7LPU60zAh"
 
   # The port on which the DB accepts connections
   # type: string
@@ -77,7 +81,7 @@ inputs = {
 
   # Username for the master DB user
   # type: string
-  username = "doe"
+  username = "elk"
 
   # List of VPC security groups to associate
   # type: list(string)
