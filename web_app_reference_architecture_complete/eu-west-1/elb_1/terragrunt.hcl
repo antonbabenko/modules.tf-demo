@@ -29,7 +29,7 @@ inputs = {
 
   # The name of the ELB
   # type: string
-  name = "safe-hog"
+  name = "sweet-serval"
 
   # A list of security group IDs to assign to the ELB
   # type: list(string)

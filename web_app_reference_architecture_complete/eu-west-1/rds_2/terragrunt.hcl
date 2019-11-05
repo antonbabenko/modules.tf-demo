@@ -49,7 +49,7 @@ inputs = {
 
   # The name of the RDS instance, if omitted, Terraform will assign a random, unique identifier
   # type: string
-  identifier = "fresh-kiwi"
+  identifier = "comic-beagle"
 
   # The instance type of the RDS instance
   # type: string
@@ -69,7 +69,7 @@ inputs = {
 
   # Password for the master DB user. Note that this may show up in logs, and it will be stored in the state file
   # type: string
-  password = "3DLtEmCXvZne"
+  password = "azvNz5UZrtGm"
 
   # The port on which the DB accepts connections
   # type: string
@@ -77,7 +77,7 @@ inputs = {
 
   # Username for the master DB user
   # type: string
-  username = "tapir"
+  username = "doe"
 
   # List of VPC security groups to associate
   # type: list(string)

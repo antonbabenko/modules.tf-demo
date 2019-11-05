@@ -49,7 +49,7 @@ inputs = {
 
   # Creates a unique name beginning with the specified prefix
   # type: string
-  name = "crack-jaguar"
+  name = "able-foal"
 
   # A list of security group IDs to assign to the launch configuration
   # type: list(string)
