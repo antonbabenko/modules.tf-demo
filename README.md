@@ -2,6 +2,12 @@
 
 This repository contains infrastructure as Terraform configurations which were automatically generated from blueprint created using [cloudcraft.co](https://cloudcraft.co/app).
 
+### Original infrastructure
+
+![Web App Reference Architecture (complete)](https://raw.githubusercontent.com/antonbabenko/modules.tf-demo/master/Web%20App%20Reference%20Architecture%20(complete).png) 
+
+---
+
 [Terragrunt](https://github.com/gruntwork-io/terragrunt) is used to work with Terraform configurations which allows to orchestrate dependent layers, update arguments dynamically and keep configurations [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself).
 
 ## Table of Contents
