@@ -87,5 +87,5 @@ inputs = {
   # type: list(string)
   vpc_security_group_ids = [dependency.security-group_1.outputs.this_security_group_id]
 
-  
+
 }

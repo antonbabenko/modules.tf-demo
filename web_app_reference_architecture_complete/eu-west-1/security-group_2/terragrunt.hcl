@@ -35,5 +35,5 @@ inputs = {
   # type: string
   vpc_id = dependency.vpc.outputs.vpc_id
 
-  
+
 }

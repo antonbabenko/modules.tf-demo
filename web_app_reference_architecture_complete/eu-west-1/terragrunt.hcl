@@ -17,7 +17,7 @@ terraform {
 }
 
 remote_state {
-  backend = "s3"
+  backend      = "s3"
   disable_init = tobool(get_env("TERRAGRUNT_DISABLE_INIT", "false"))
 
   config = {

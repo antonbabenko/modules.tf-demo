@@ -29,7 +29,7 @@ dependency "security-group_2" {
 inputs = {
   # The number of Amazon EC2 instances that should be running in the group
   # type: string
-  desired_capacity = "0"
+  desired_capacity = "1"
 
   # Controls how health checking is done. Values are - EC2 and ELB
   # type: string
@@ -45,7 +45,7 @@ inputs = {
 
   # The maximum size of the auto scale group
   # type: string
-  max_size = "0"
+  max_size = "1"
 
   # The minimum size of the auto scale group
   # type: string
@@ -63,5 +63,5 @@ inputs = {
   # type: list(string)
   vpc_zone_identifier = dependency.vpc.outputs.public_subnets
 
-  
+
 }
