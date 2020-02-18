@@ -53,7 +53,7 @@ inputs = {
 
   # Creates a unique name beginning with the specified prefix
   # type: string
-  name = "valid-bison"
+  name = "frank-bunny"
 
   # A list of security group IDs to assign to the launch configuration
   # type: list(string)
@@ -63,5 +63,5 @@ inputs = {
   # type: list(string)
   vpc_zone_identifier = dependency.vpc.outputs.public_subnets
 
-
+  
 }

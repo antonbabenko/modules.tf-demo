@@ -25,15 +25,15 @@ dependency "security-group_3" {
 inputs = {
   # A health check block
   # type: map(string)
-  health_check = { "healthy_threshold" : 2, "interval" : 30, "target" : "HTTP:80/", "timeout" : 5, "unhealthy_threshold" : 2 }
+  health_check = {"healthy_threshold": 2, "interval": 30, "target": "HTTP:80/", "timeout": 5, "unhealthy_threshold": 2}
 
   # A list of listener blocks
   # type: list(map(string))
-  listener = [{ "instance_port" : "80", "instance_protocol" : "http", "lb_port" : "80", "lb_protocol" : "http" }]
+  listener = [{"instance_port": "80", "instance_protocol": "http", "lb_port": "80", "lb_protocol": "http"}]
 
   # The name of the ELB
   # type: string
-  name = "open-stag"
+  name = "mighty-wren"
 
   # A list of security group IDs to assign to the ELB
   # type: list(string)
@@ -43,5 +43,5 @@ inputs = {
   # type: list(string)
   subnets = dependency.vpc.outputs.public_subnets
 
-
+  
 }
