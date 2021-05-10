@@ -1,5 +1,5 @@
 terraform {
-  source = "git::git@github.com:terraform-aws-modules/terraform-aws-rds.git?ref=v2.5.0"
+  source = "git::git@github.com:terraform-aws-modules/terraform-aws-rds.git?ref=v3.0.0"
 }
 
 include {
@@ -7,20 +7,20 @@ include {
 }
 
 dependencies {
-  paths = ["../vpc", "../security-group_1"]
+  paths = ["../my-vpc", "../rds-sg"]
 }
 
-dependency "vpc" {
-  config_path = "../vpc"
+dependency "my-vpc" {
+  config_path = "../my-vpc"
 }
 
-dependency "security-group_1" {
-  config_path = "../security-group_1"
+dependency "rds-sg" {
+  config_path = "../rds-sg"
 }
 
 ###########################################################
 # View all available inputs for this module:
-# https://registry.terraform.io/modules/terraform-aws-modules/rds/aws/2.5.0?tab=inputs
+# https://registry.terraform.io/modules/terraform-aws-modules/rds/aws/3.0.0?tab=inputs
 ###########################################################
 inputs = {
   # The allocated storage in gigabytes
@@ -35,9 +35,13 @@ inputs = {
   # type: string
   backup_window = ""
 
+  # Whether to create a database subnet group
+  # type: bool
+  create_db_subnet_group = false
+
   # Name of DB subnet group. DB instance will be created in the VPC associated with the DB subnet group. If unspecified, will be created in the default VPC
   # type: string
-  db_subnet_group_name = dependency.vpc.outputs.database_subnet_group
+  db_subnet_group_name = dependency.my-vpc.outputs.database_subnet_group
 
   # The database engine to use
   # type: string
@@ -45,15 +49,15 @@ inputs = {
 
   # The engine version to use
   # type: string
-  engine_version = "5.7.19"
+  engine_version = "8.0.20"
 
   # The family of the DB parameter group
   # type: string
-  family = "mysql5.7"
+  family = "mysql8.0"
 
   # The name of the RDS instance, if omitted, Terraform will assign a random, unique identifier
   # type: string
-  identifier = "true-mutt"
+  identifier = "pro-dog"
 
   # The instance type of the RDS instance
   # type: string
@@ -65,7 +69,7 @@ inputs = {
 
   # Specifies the major version of the engine that this option group should be associated with
   # type: string
-  major_engine_version = "5.7"
+  major_engine_version = "8.0"
 
   # Specifies if the RDS instance is multi-AZ
   # type: bool
@@ -73,19 +77,23 @@ inputs = {
 
   # Password for the master DB user. Note that this may show up in logs, and it will be stored in the state file
   # type: string
-  password = "NjR4HyvaGdMG"
+  password = "HlHC9YZOYRXM"
 
   # The port on which the DB accepts connections
   # type: string
   port = "3306"
 
+  # Determines whether a final DB snapshot is created before the DB instance is deleted. If true is specified, no DBSnapshot is created. If false is specified, a DB snapshot is created before the DB instance is deleted, using the value from final_snapshot_identifier
+  # type: bool
+  skip_final_snapshot = true
+
   # Username for the master DB user
   # type: string
-  username = "yak"
+  username = "coral"
 
   # List of VPC security groups to associate
   # type: list(string)
-  vpc_security_group_ids = [dependency.security-group_1.outputs.this_security_group_id]
+  vpc_security_group_ids = [dependency.rds-sg.outputs.security_group_id]
 
-  
+
 }

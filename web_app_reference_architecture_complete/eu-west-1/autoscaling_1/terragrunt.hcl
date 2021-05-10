@@ -1,5 +1,5 @@
 terraform {
-  source = "git::git@github.com:terraform-aws-modules/terraform-aws-autoscaling.git?ref=v3.1.0"
+  source = "git::git@github.com:terraform-aws-modules/terraform-aws-autoscaling.git?ref=v4.1.0"
 }
 
 include {
@@ -7,61 +7,69 @@ include {
 }
 
 dependencies {
-  paths = ["../aws-data", "../vpc", "../security-group_4"]
+  paths = ["../aws-data", "../my-vpc", "../asg1-sg"]
 }
 
 dependency "aws-data" {
   config_path = "../aws-data"
 }
 
-dependency "vpc" {
-  config_path = "../vpc"
+dependency "my-vpc" {
+  config_path = "../my-vpc"
 }
 
-dependency "security-group_4" {
-  config_path = "../security-group_4"
+dependency "asg1-sg" {
+  config_path = "../asg1-sg"
 }
 
 ###########################################################
 # View all available inputs for this module:
-# https://registry.terraform.io/modules/terraform-aws-modules/autoscaling/aws/3.1.0?tab=inputs
+# https://registry.terraform.io/modules/terraform-aws-modules/autoscaling/aws/4.1.0?tab=inputs
 ###########################################################
 inputs = {
-  # The number of Amazon EC2 instances that should be running in the group
-  # type: string
-  desired_capacity = "1"
+  # Determines whether to create launch template or not
+  # type: bool
+  create_lt = true
 
-  # Controls how health checking is done. Values are - EC2 and ELB
+  # The number of Amazon EC2 instances that should be running in the autoscaling group
+  # type: number
+  desired_capacity = 1
+
+  # `EC2` or `ELB`. Controls how health checking is done
   # type: string
   health_check_type = "EC2"
 
-  # The EC2 image ID to launch
+  # The AMI from which to launch the instance
   # type: string
   image_id = dependency.aws-data.outputs.amazon_linux2_aws_ami_id
 
-  # The size of instance to launch
+  # The type of the instance to launch
   # type: string
   instance_type = "m3.large"
 
-  # The maximum size of the auto scale group
-  # type: string
-  max_size = "1"
+  # The maximum size of the autoscaling group
+  # type: number
+  max_size = 1
 
-  # The minimum size of the auto scale group
-  # type: string
-  min_size = "0"
+  # The minimum size of the autoscaling group
+  # type: number
+  min_size = 0
 
-  # Creates a unique name beginning with the specified prefix
+  # Name used across the resources created
   # type: string
-  name = "frank-bunny"
+  name = "loved-pony"
 
-  # A list of security group IDs to assign to the launch configuration
+  # A list of security group IDs to associate
   # type: list(string)
-  security_groups = [dependency.security-group_4.outputs.this_security_group_id]
+  security_groups = [dependency.asg1-sg.outputs.security_group_id]
 
-  # A list of subnet IDs to launch resources in
+  # Determines whether to use a launch template in the autoscaling group or not
+  # type: bool
+  use_lt = true
+
+  # A list of subnet IDs to launch resources in. Subnets automatically determine which availability zones the group will reside. Conflicts with `availability_zones`
   # type: list(string)
-  vpc_zone_identifier = dependency.vpc.outputs.public_subnets
+  vpc_zone_identifier = dependency.my-vpc.outputs.public_subnets
 
   
 }

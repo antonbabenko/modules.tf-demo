@@ -1,5 +1,5 @@
 terraform {
-  source = "git::git@github.com:terraform-aws-modules/terraform-aws-vpc.git?ref=v2.18.0"
+  source = "git::git@github.com:terraform-aws-modules/terraform-aws-vpc.git?ref=v3.0.0"
 }
 
 include {
@@ -16,10 +16,10 @@ dependency "aws-data" {
 
 ###########################################################
 # View all available inputs for this module:
-# https://registry.terraform.io/modules/terraform-aws-modules/vpc/aws/2.18.0?tab=inputs
+# https://registry.terraform.io/modules/terraform-aws-modules/vpc/aws/3.0.0?tab=inputs
 ###########################################################
 inputs = {
-  # A list of availability zones in the region
+  # A list of availability zones names or ids in the region
   # type: list(string)
   azs = [for v in dependency.aws-data.outputs.available_aws_availability_zones_names: v]
 
