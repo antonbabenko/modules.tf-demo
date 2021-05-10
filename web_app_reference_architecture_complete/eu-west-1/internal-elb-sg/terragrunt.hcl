@@ -1,5 +1,5 @@
 terraform {
-  source = "git::git@github.com:terraform-aws-modules/terraform-aws-security-group.git?ref=v3.1.0"
+  source = "git::git@github.com:terraform-aws-modules/terraform-aws-security-group.git?ref=v4.0.0"
 }
 
 include {
@@ -7,16 +7,16 @@ include {
 }
 
 dependencies {
-  paths = ["../vpc"]
+  paths = ["../my-vpc"]
 }
 
-dependency "vpc" {
-  config_path = "../vpc"
+dependency "my-vpc" {
+  config_path = "../my-vpc"
 }
 
 ###########################################################
 # View all available inputs for this module:
-# https://registry.terraform.io/modules/terraform-aws-modules/security-group/aws/3.1.0?tab=inputs
+# https://registry.terraform.io/modules/terraform-aws-modules/security-group/aws/4.0.0?tab=inputs
 ###########################################################
 inputs = {
   # List of IPv4 CIDR ranges to use on all ingress rules
@@ -29,11 +29,11 @@ inputs = {
 
   # Name of security group
   # type: string
-  name = "asg2-sg"
+  name = "internal-elb-sg"
 
   # ID of the VPC where to create security group
   # type: string
-  vpc_id = dependency.vpc.outputs.vpc_id
+  vpc_id = dependency.my-vpc.outputs.vpc_id
 
   
 }
